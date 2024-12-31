@@ -15,75 +15,75 @@ public class Menu {
     public Menu() {
     }
 
-    public static void menu_admin(Scanner scanner, university uni, Profesor profesor_vacio) {
-        while (true) {
-            TerminalUtils.clearTerminal();
-            System.out.println("----Menu ADMIN----");
-            System.out.println("Selecciona una de las opciones siguientes");
-            System.out.println("1-. Crear un profesor");
-            System.out.println("2-. Crear un grupo");
-            System.out.println("3-. Inscribir un alumno");
-            System.out.println("4-. Crear una materia");
-            System.out.println("5-. Ver listado de profesores");
-            System.out.println("6-. Ver listado de alumnos");
-            System.out.println("7-. Ver listado de grupos");
-            System.out.println("8-. Ver listado de materias");
-            System.out.println("9-. Salir del menu");
-            int op2 = scanner.nextInt();
-            scanner.nextLine(); // Consume the leftover newline
-            switch (op2) {
-                case 1:
-                    crear_profesor(scanner, uni, new Materia(), 0);
-                    break;
-
-                case 2:
-                    crear_grupo(scanner, uni, profesor_vacio);
-                    break;
-
-                case 3:
-                    crear_alumno(scanner, uni);
-                    break;
-
-                case 4:
-                    crear_materia(scanner, uni);
-                    break;
-
-
-                case 5:
-                    TerminalUtils.clearTerminal();
-                    System.out.println("----Listado de profesores----");
-                    System.out.println(uni.imprimirProfesores());
-                    break;
-
-                case 6:
-                    TerminalUtils.clearTerminal();
-                    System.out.println("----Listado de alumnos----");
-                    System.out.println(uni.imprimirAlumnos());
-                    break;
-
-                case 7:
-                    TerminalUtils.clearTerminal();
-                    System.out.println("----Listado de grupos----");
-                    System.out.println(uni.imprimirGrupos());
-                    break;
-
-                case 8:
-                    TerminalUtils.clearTerminal();
-                    System.out.println("----Listado de materias----");
-                    System.out.println(uni.imprimirMaterias());
-                    break;
-                case 9:
-                    System.out.println("Saliendo del menu");
-                    return; // Exit the loop
-
-                default:
-                    throw new AssertionError();
-            }
-        }
-
+    public static void menu_admin(university uni, Profesor profesor_vacio) {
+        
+//        while (true) {
+//            TerminalUtils.clearTerminal();
+//            System.out.println("----Menu ADMIN----");
+//            System.out.println("Selecciona una de las opciones siguientes");
+//            System.out.println("1-. Crear un profesor");
+//            System.out.println("2-. Crear un grupo");
+//            System.out.println("3-. Inscribir un alumno");
+//            System.out.println("4-. Crear una materia");
+//            System.out.println("5-. Ver listado de profesores");
+//            System.out.println("6-. Ver listado de alumnos");
+//            System.out.println("7-. Ver listado de grupos");
+//            System.out.println("8-. Ver listado de materias");
+//            System.out.println("9-. Salir del menu");
+//            int op2 = scanner.nextInt();
+//            scanner.nextLine(); // Consume the leftover newline
+//            switch (op2) {
+//                case 1:
+//                    crear_profesor(scanner, uni, new Materia(), 0);
+//                    break;
+//
+//                case 2:
+//                    crear_grupo(scanner, uni, profesor_vacio);
+//                    break;
+//
+//                case 3:
+//                    crear_alumno(scanner, uni);
+//                    break;
+//
+//                case 4:
+//                    crear_materia(scanner, uni);
+//                    break;
+//
+//
+//                case 5:
+//                    TerminalUtils.clearTerminal();
+//                    System.out.println("----Listado de profesores----");
+//                    System.out.println(uni.imprimirProfesores());
+//                    break;
+//
+//                case 6:
+//                    TerminalUtils.clearTerminal();
+//                    System.out.println("----Listado de alumnos----");
+//                    System.out.println(uni.imprimirAlumnos());
+//                    break;
+//
+//                case 7:
+//                    TerminalUtils.clearTerminal();
+//                    System.out.println("----Listado de grupos----");
+//                    System.out.println(uni.imprimirGrupos());
+//                    break;
+//
+//                case 8:
+//                    TerminalUtils.clearTerminal();
+//                    System.out.println("----Listado de materias----");
+//                    System.out.println(uni.imprimirMaterias());
+//                    break;
+//                case 9:
+//                    System.out.println("Saliendo del menu");
+//                    return; // Exit the loop
+//
+//                default:
+//                    throw new AssertionError();
+//            }
+//        }
     }
 
-    private static void crear_materia(Scanner scanner, university uni) {
+    public static void crear_materia(university uni) {
         try {
             TerminalUtils.clearTerminal();
             System.out.println("Nombre de la materia:  ");
@@ -112,7 +112,7 @@ public class Menu {
         }
     }
 
-    private static void crear_alumno(Scanner scanner, university uni) {
+    public static void crear_alumno(university uni) {
         try {
             TerminalUtils.clearTerminal();
             if (!uni.getAlumnos().isEmpty() && Alumno.getContador() == uni.getAlumnosMax()) {
@@ -164,7 +164,7 @@ public class Menu {
         }
     }
 
-    private static void crear_grupo(Scanner scanner, university uni, Profesor profesorVacio) {
+    public static void crear_grupo(university uni, Profesor profesorVacio) {
         try {
             TerminalUtils.clearTerminal();
             System.out.println("Nombre del grupo: ");
@@ -209,7 +209,7 @@ public class Menu {
         }
     }
 
-    private static Profesor crear_profesor(Scanner scanner, university uni, Materia materi, int control) {
+    public static Profesor crear_profesor(university uni, Materia materi, int control) {
         try {
             TerminalUtils.clearTerminal();
             String materia;
@@ -284,42 +284,42 @@ public class Menu {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        university uni = new university();
-        Profesor profesor_vacio = new Profesor("", "", "", "", Roles.PROFESOR, "", "");
-
-        while (true) {
-            TerminalUtils.clearTerminal();
-            System.out.println("-----Menu Principal-----");
-            System.out.println("1-. Adminsitrador");
-            System.out.println("2-. Alumno");
-            System.out.println("3-. Profesor");
-            System.out.println("4-. Salir");
-            int op1 = scanner.nextInt();
-            scanner.nextLine(); // Consume the leftover newline
-            switch (op1) {
-                case 1:
-                    menu_admin(scanner, uni, profesor_vacio);
-                    break;
-
-                case 2:
-                    menu_alumno(scanner, uni);
-                    break;
-
-                case 3:
-                    menu_profesor(scanner, uni);
-                    break;
-
-                case 4:
-                    return; // Exit the loop
-                default:
-                    throw new AssertionError();
-            }
-
-        }
+//        Scanner scanner = new Scanner(System.in);
+//        university uni = new university();
+//        Profesor profesor_vacio = new Profesor("", "", "", "", Roles.PROFESOR, "", "");
+//
+//        while (true) {
+//            TerminalUtils.clearTerminal();
+//            System.out.println("-----Menu Principal-----");
+//            System.out.println("1-. Adminsitrador");
+//            System.out.println("2-. Alumno");
+//            System.out.println("3-. Profesor");
+//            System.out.println("4-. Salir");
+//            int op1 = scanner.nextInt();
+//            scanner.nextLine(); // Consume the leftover newline
+//            switch (op1) {
+//                case 1:
+//                    menu_admin(uni, profesor_vacio);
+//                    break;
+//
+//                case 2:
+//                    menu_alumno(uni);
+//                    break;
+//
+//                case 3:
+//                    menu_profesor(uni);
+//                    break;
+//
+//                case 4:
+//                    return; // Exit the loop
+//                default:
+//                    throw new AssertionError();
+//            }
+//
+//        }
     }
 
-    private static void menu_profesor(Scanner scanner, university uni) {
+    private static void menu_profesor(university uni) {
         TerminalUtils.clearTerminal();
         while (true) {
             TerminalUtils.clearTerminal();
@@ -376,7 +376,7 @@ public class Menu {
 
     }
 
-    private static void menu_alumno(Scanner scanner, university uni) {
+    private static void menu_alumno(university uni) {
         while (true) {
             TerminalUtils.clearTerminal();
             System.out.println("----Menu ALUMNO----");
