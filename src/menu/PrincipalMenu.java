@@ -110,11 +110,15 @@ public class PrincipalMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_adminButtonActionPerformed
 
     private void alumnoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alumnoButtonActionPerformed
-        // TODO add your handling code here:
+        AlumnoMenu alumnoMenu = new AlumnoMenu(uni);
+        alumnoMenu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_alumnoButtonActionPerformed
 
     private void profesorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profesorButtonActionPerformed
-        // TODO add your handling code here:
+        ProfeMenu profeMenu = new ProfeMenu(uni);
+        profeMenu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_profesorButtonActionPerformed
 
     /**

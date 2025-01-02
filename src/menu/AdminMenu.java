@@ -9,6 +9,7 @@ import school.university;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import school.Materia;
+import menu.generarMateriasGrup;
 
 /**
  *
@@ -17,12 +18,16 @@ import school.Materia;
 public class AdminMenu extends javax.swing.JFrame {
     private university uni;
     private Profesor profesor_vacio;
+    private generarMateriasGrup generarmateriasGrup;
+    private Materia materia;
+    int control;
     /**
      * Creates new form AdminMenu
      */
     public AdminMenu(university uni, Profesor profesor_vacio) {
         this.uni = uni;
         this.profesor_vacio = profesor_vacio;
+        this.generarmateriasGrup = new generarMateriasGrup(uni, profesor_vacio);
         initComponents();
     }
 
@@ -180,11 +185,21 @@ public class AdminMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProfesorActionPerformed
-        Menu.crear_profesor(uni,new Materia(), 0);
+        crearProfe crearprofe = new crearProfe(uni,materia,control);
+        crearprofe.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_crearProfesorActionPerformed
 
     private void crearGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearGrupoActionPerformed
-        Menu.crear_grupo(uni, profesor_vacio);
+        if (uni == null || profesor_vacio == null || generarmateriasGrup == null) {
+        JOptionPane.showMessageDialog(this, 
+            "No se puede crear un grupo porque hay datos faltantes.",
+            "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+        crearGrupo creargrupo = new crearGrupo(uni, profesor_vacio, generarmateriasGrup);
+        creargrupo.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_crearGrupoActionPerformed
 
     private void inscribirAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscribirAlumnoActionPerformed

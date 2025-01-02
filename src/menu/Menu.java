@@ -15,7 +15,7 @@ public class Menu {
     public Menu() {
     }
 
-    public static void menu_admin(university uni, Profesor profesor_vacio) {
+    private static void menu_admin(university uni, Profesor profesor_vacio) {
         
 //        while (true) {
 //            TerminalUtils.clearTerminal();
@@ -165,122 +165,122 @@ public class Menu {
     }
 
     public static void crear_grupo(university uni, Profesor profesorVacio) {
-        try {
-            TerminalUtils.clearTerminal();
-            System.out.println("Nombre del grupo: ");
-            String nombre_grupo = scanner.nextLine();
-            if (uni.buscarGrupoPorNombre(nombre_grupo) != null) {
-                System.out.println("Grupo ya existe");
-                return;
-            }
-            Grupo grupo = new Grupo(nombre_grupo);
-            uni.addGrupo(grupo);
-
-            System.out.println("¿Cuántas materias deseas agregar a ese grupo?: ");
-            int cantSubjetcs = scanner.nextInt();
-            scanner.nextLine(); // Consume the leftover newline
-            if (cantSubjetcs > 0) {
-                System.out.println("Ingresa sus nombres de cada una:");
-                for (int i = 0; i < cantSubjetcs; i++) {
-                    System.out.println("Materia" + (i + 1));
-                    String subject = scanner.nextLine();
-                    Materia materia = new Materia(subject, profesorVacio, grupo);
-                    grupo.addMateria(materia);
-                    uni.addMateria(materia, grupo);
-                }
-                System.out.println(grupo.imprimirMaterias());
-
-            }
-
-            System.out.println("Agrega los profesores a las materias agregadas");
-            for (var x : grupo.getMaterias()) {
-                crear_profesor(scanner, uni, x, 1);
-            }
-            System.out.println("¿Quiere ver el listado de todo? y/n");
-            char ver = scanner.next().charAt(0);
-            if (ver == 'y') {
-                for (var x : grupo.getMaterias()) {
-                    System.out.println(x.getNombre());
-                }
-            }
-        } catch (Exception e) {
-            System.err.println("Ocurrió un error al procesar los datos del grupo: " + e.getMessage());
-            e.printStackTrace();
-        }
+//        try {
+//            TerminalUtils.clearTerminal();
+//            System.out.println("Nombre del grupo: ");
+//            String nombre_grupo = scanner.nextLine();
+//            if (uni.buscarGrupoPorNombre(nombre_grupo) != null) {
+//                System.out.println("Grupo ya existe");
+//                return;
+//            }
+//            Grupo grupo = new Grupo(nombre_grupo);
+//            uni.addGrupo(grupo);
+//
+//            System.out.println("¿Cuántas materias deseas agregar a ese grupo?: ");
+//            int cantSubjetcs = scanner.nextInt();
+//            scanner.nextLine(); // Consume the leftover newline
+//            if (cantSubjetcs > 0) {
+//                System.out.println("Ingresa sus nombres de cada una:");
+//                for (int i = 0; i < cantSubjetcs; i++) {
+//                    System.out.println("Materia" + (i + 1));
+//                    String subject = scanner.nextLine();
+//                    Materia materia = new Materia(subject, profesorVacio, grupo);
+//                    grupo.addMateria(materia);
+//                    uni.addMateria(materia, grupo);
+//                }
+//                System.out.println(grupo.imprimirMaterias());
+//
+//            }
+//
+//            System.out.println("Agrega los profesores a las materias agregadas");
+//            for (var x : grupo.getMaterias()) {
+//                crear_profesor(scanner, uni, x, 1);
+//            }
+//            System.out.println("¿Quiere ver el listado de todo? y/n");
+//            char ver = scanner.next().charAt(0);
+//            if (ver == 'y') {
+//                for (var x : grupo.getMaterias()) {
+//                    System.out.println(x.getNombre());
+//                }
+//            }
+//        } catch (Exception e) {
+//            System.err.println("Ocurrió un error al procesar los datos del grupo: " + e.getMessage());
+//            e.printStackTrace();
+//        }
     }
-
+    
     public static Profesor crear_profesor(university uni, Materia materi, int control) {
-        try {
-            TerminalUtils.clearTerminal();
-            String materia;
-            System.out.println("Nombre del profesor: ");
-            String nombre_profe = scanner.nextLine();
-
-            System.out.println("Apellido del profesor: ");
-            String apellido_profe = scanner.nextLine();
-
-            System.out.println("Email del profesor: ");
-            String email_profe = scanner.nextLine();
-
-            System.out.println("Password del profesor: ");
-            String pass_profe = scanner.nextLine();
-
-            System.out.println("Cédula del profesor: ");
-            String cedula_profe = scanner.nextLine();
-
-            System.out.println("Título del profesor: ");
-            String titulo_profe = scanner.nextLine();
-
-
-            if (control == 1) {
-                System.out.println("Agregando profesor a la materia");
-                Profesor profesor;
-                if (uni.buscarProfesorPorCedula(cedula_profe) != null) {
-                    profesor = uni.buscarProfesorPorCedula(cedula_profe);
-                    profesor.addMateria(materi);
-                    materi.setProfesor(profesor);
-                    return null;
-                } else {
-                    profesor = new Profesor(nombre_profe, apellido_profe, email_profe, pass_profe, Roles.PROFESOR, cedula_profe, titulo_profe);
-                    profesor.addMateria(materi);
-                    materi.setProfesor(profesor);
-                    uni.addProfesor(profesor);
-
-                }
-
-            } else {
-                System.out.println("Dame el grupo al que pertenece el profesor: ");
-                String grupo = scanner.nextLine();
-                System.out.println("Dame el nombre de la materia: ");
-                materia = scanner.nextLine();
-
-                if (uni.getGrupos().isEmpty()) {
-                    System.out.println("No hay grupos creados");
-                } else if (uni.buscarGrupoPorNombre(grupo) != null) {
-                    if (uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia) != null) {
-                        if (uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia).getProfesor().getName().equals(nombre_profe)) {
-                            System.out.println("Profesor ya existe");
-                            return null;
-                        }
-                        System.out.println("Agregando profesor a la materia");
-                        Profesor profesor = new Profesor(nombre_profe, apellido_profe, email_profe, pass_profe, Roles.PROFESOR, cedula_profe, titulo_profe);
-                        uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia).setProfesor(profesor);
-                        uni.addProfesor(profesor);
-                        return profesor;
-                    } else {
-                        System.out.println("Materia no encontrada");
-                    }
-                } else {
-                    System.out.println("Grupo no encontrado");
-                }
-
-            }
-
-        } catch (Exception e) {
-            System.err.println("Ocurrió un error al procesar los datos del profesor: " + e.getMessage());
-            e.printStackTrace();
-        }
-        return null;
+//        try {
+//            TerminalUtils.clearTerminal();
+//            String materia;
+//            System.out.println("Nombre del profesor: ");
+//            String nombre_profe = scanner.nextLine();
+//
+//            System.out.println("Apellido del profesor: ");
+//            String apellido_profe = scanner.nextLine();
+//
+//            System.out.println("Email del profesor: ");
+//            String email_profe = scanner.nextLine();
+//
+//            System.out.println("Password del profesor: ");
+//            String pass_profe = scanner.nextLine();
+//
+//            System.out.println("Cédula del profesor: ");
+//            String cedula_profe = scanner.nextLine();
+//
+//            System.out.println("Título del profesor: ");
+//            String titulo_profe = scanner.nextLine();
+//
+//
+//            if (control == 1) {
+//                System.out.println("Agregando profesor a la materia");
+//                Profesor profesor;
+//                if (uni.buscarProfesorPorCedula(cedula_profe) != null) {
+//                    profesor = uni.buscarProfesorPorCedula(cedula_profe);
+//                    profesor.addMateria(materi);
+//                    materi.setProfesor(profesor);
+//                    return null;
+//                } else {
+//                    profesor = new Profesor(nombre_profe, apellido_profe, email_profe, pass_profe, Roles.PROFESOR, cedula_profe, titulo_profe);
+//                    profesor.addMateria(materi);
+//                    materi.setProfesor(profesor);
+//                    uni.addProfesor(profesor);
+//
+//                }
+//
+//            } else {
+//                System.out.println("Dame el grupo al que pertenece el profesor: ");
+//                String grupo = scanner.nextLine();
+//                System.out.println("Dame el nombre de la materia: ");
+//                materia = scanner.nextLine();
+//
+//                if (uni.getGrupos().isEmpty()) {
+//                    System.out.println("No hay grupos creados");
+//                } else if (uni.buscarGrupoPorNombre(grupo) != null) {
+//                    if (uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia) != null) {
+//                        if (uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia).getProfesor().getName().equals(nombre_profe)) {
+//                            System.out.println("Profesor ya existe");
+//                            return null;
+//                        }
+//                        System.out.println("Agregando profesor a la materia");
+//                        Profesor profesor = new Profesor(nombre_profe, apellido_profe, email_profe, pass_profe, Roles.PROFESOR, cedula_profe, titulo_profe);
+//                        uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia).setProfesor(profesor);
+//                        uni.addProfesor(profesor);
+//                        return profesor;
+//                    } else {
+//                        System.out.println("Materia no encontrada");
+//                    }
+//                } else {
+//                    System.out.println("Grupo no encontrado");
+//                }
+//
+//            }
+//
+//        } catch (Exception e) {
+//            System.err.println("Ocurrió un error al procesar los datos del profesor: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//        return null;
     }
 
     public static void main(String[] args) {
@@ -320,103 +320,101 @@ public class Menu {
     }
 
     private static void menu_profesor(university uni) {
-        TerminalUtils.clearTerminal();
-        while (true) {
-            TerminalUtils.clearTerminal();
-            System.out.println("----Menu PROFESOR----");
-            System.out.println("Selecciona una de las opciones siguientes");
-            System.out.println("1-. Ver materias");
-            System.out.println("2-. Ver alumnos");
-            System.out.println("3-. Ver grupos");
-            System.out.println("4-. Salir del menu");
-            int op2 = scanner.nextInt();
-            scanner.nextLine(); // Consume the leftover newline
-            switch (op2) {
-                case 1:
-                    TerminalUtils.clearTerminal();
-                    System.out.println("Dame la cedula del profesor: ");
-                    String cedula = scanner.nextLine();
-                    if (uni.buscarProfesorPorCedula(cedula) != null) {
-                        System.out.println(uni.buscarProfesorPorCedula(cedula).imprimirMaterias());
-                    } else {
-                        System.out.println("Profesor no encontrado");
-                    }
-                    break;
-
-                case 2:
-                    TerminalUtils.clearTerminal();
-                    System.out.println("Dame la cedula del profesor: ");
-                    String cedula2 = scanner.nextLine();
-                    if (uni.buscarProfesorPorCedula(cedula2) != null) {
-                        System.out.println(uni.buscarProfesorPorCedula(cedula2).imprimirAlumnos());
-                    } else {
-                        System.out.println("Profesor no encontrado");
-                    }
-                    break;
-
-                case 3:
-                    TerminalUtils.clearTerminal();
-                    System.out.println("Dame la cedula del profesor: ");
-                    String cedula3 = scanner.nextLine();
-                    if (uni.buscarProfesorPorCedula(cedula3) != null) {
-                        System.out.println(uni.buscarProfesorPorCedula(cedula3).imprimirGrupos());
-                    } else {
-                        System.out.println("Profesor no encontrado");
-                    }
-                    break;
-
-                case 4:
-                    System.out.println("Saliendo del menu");
-                    return; // Exit the loop
-
-                default:
-                    throw new AssertionError();
-            }
-        }
-
+//        TerminalUtils.clearTerminal();
+//        while (true) {
+//            TerminalUtils.clearTerminal();
+//            System.out.println("----Menu PROFESOR----");
+//            System.out.println("Selecciona una de las opciones siguientes");
+//            System.out.println("1-. Ver materias");
+//            System.out.println("2-. Ver alumnos");
+//            System.out.println("3-. Ver grupos");
+//            System.out.println("4-. Salir del menu");
+//            int op2;
+//            switch (op2) {
+//                case 1:
+//                    TerminalUtils.clearTerminal();
+//                    System.out.println("Dame la cedula del profesor: ");
+//                    String cedula = scanner.nextLine();
+//                    if (uni.buscarProfesorPorCedula(cedula) != null) {
+//                        System.out.println(uni.buscarProfesorPorCedula(cedula).imprimirMaterias());
+//                    } else {
+//                        System.out.println("Profesor no encontrado");
+//                    }
+//                    break;
+//
+//                case 2:
+//                    TerminalUtils.clearTerminal();
+//                    System.out.println("Dame la cedula del profesor: ");
+//                    String cedula2 = scanner.nextLine();
+//                    if (uni.buscarProfesorPorCedula(cedula2) != null) {
+//                        System.out.println(uni.buscarProfesorPorCedula(cedula2).imprimirAlumnos());
+//                    } else {
+//                        System.out.println("Profesor no encontrado");
+//                    }
+//                    break;
+//
+//                case 3:
+//                    TerminalUtils.clearTerminal();
+//                    System.out.println("Dame la cedula del profesor: ");
+//                    String cedula3 = scanner.nextLine();
+//                    if (uni.buscarProfesorPorCedula(cedula3) != null) {
+//                        System.out.println(uni.buscarProfesorPorCedula(cedula3).imprimirGrupos());
+//                    } else {
+//                        System.out.println("Profesor no encontrado");
+//                    }
+//                    break;
+//
+//                case 4:
+//                    System.out.println("Saliendo del menu");
+//                    return; // Exit the loop
+//
+//                default:
+//                    throw new AssertionError();
+//            }
+//        }
     }
 
     private static void menu_alumno(university uni) {
-        while (true) {
-            TerminalUtils.clearTerminal();
-            System.out.println("----Menu ALUMNO----");
-            System.out.println("Selecciona una de las opciones siguientes");
-            System.out.println("1-. Ver materias inscritas");
-            System.out.println("2-. Ver calificaciones");
-            System.out.println("3-. Salir del menu");
-            int op2 = scanner.nextInt();
-            scanner.nextLine(); // Consume the leftover newline
-            switch (op2) {
-                case 1:
-                    TerminalUtils.clearTerminal();
-                    System.out.println("Dame la matricula del alumno: ");
-                    String matricula = scanner.nextLine();
-                    if (uni.buscarAlumnoPorMatricula(matricula) != null) {
-                        System.out.println(uni.buscarAlumnoPorMatricula(matricula).imprimirMaterias());
-                    } else {
-                        System.out.println("Alumno no encontrado");
-                    }
-                    break;
-
-                case 2:
-                    TerminalUtils.clearTerminal();
-                    System.out.println("Dame la matricula del alumno: ");
-                    String matricula2 = scanner.nextLine();
-                    if (uni.buscarAlumnoPorMatricula(matricula2) != null) {
-                        System.out.println(uni.buscarAlumnoPorMatricula(matricula2).imprimirCalificaciones());
-                    } else {
-                        System.out.println("Alumno no encontrado");
-                    }
-                    break;
-
-                case 3:
-                    TerminalUtils.clearTerminal();
-                    System.out.println("Saliendo del menu");
-                    return; // Exit the loop
-
-                default:
-                    throw new AssertionError();
-            }
-        }
+//        while (true) {
+//            TerminalUtils.clearTerminal();
+//            System.out.println("----Menu ALUMNO----");
+//            System.out.println("Selecciona una de las opciones siguientes");
+//            System.out.println("1-. Ver materias inscritas");
+//            System.out.println("2-. Ver calificaciones");
+//            System.out.println("3-. Salir del menu");
+//            int op2 = scanner.nextInt();
+//            scanner.nextLine(); // Consume the leftover newline
+//            switch (op2) {
+//                case 1:
+//                    TerminalUtils.clearTerminal();
+//                    System.out.println("Dame la matricula del alumno: ");
+//                    String matricula = scanner.nextLine();
+//                    if (uni.buscarAlumnoPorMatricula(matricula) != null) {
+//                        System.out.println(uni.buscarAlumnoPorMatricula(matricula).imprimirMaterias());
+//                    } else {
+//                        System.out.println("Alumno no encontrado");
+//                    }
+//                    break;
+//
+//                case 2:
+//                    TerminalUtils.clearTerminal();
+//                    System.out.println("Dame la matricula del alumno: ");
+//                    String matricula2 = scanner.nextLine();
+//                    if (uni.buscarAlumnoPorMatricula(matricula2) != null) {
+//                        System.out.println(uni.buscarAlumnoPorMatricula(matricula2).imprimirCalificaciones());
+//                    } else {
+//                        System.out.println("Alumno no encontrado");
+//                    }
+//                    break;
+//
+//                case 3:
+//                    TerminalUtils.clearTerminal();
+//                    System.out.println("Saliendo del menu");
+//                    return; // Exit the loop
+//
+//                default:
+//                    throw new AssertionError();
+//            }
+//        }
     }
 }
