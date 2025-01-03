@@ -84,84 +84,84 @@ public class Menu {
     }
 
     public static void crear_materia(university uni) {
-        try {
-            TerminalUtils.clearTerminal();
-            System.out.println("Nombre de la materia:  ");
-            String materia = scanner.nextLine();
-
-            System.out.println("Dame el grupo al que pertenece la materia: ");
-            String grupo = scanner.nextLine();
-
-
-            if (uni.buscarGrupoPorNombre(grupo) != null) {
-                if (uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia) != null) {
-                    System.out.println("Materia ya existe");
-                    return;
-                }
-            }
-            Profesor profesor_vacio = new Profesor();
-            Materia materia1 = new Materia(materia, profesor_vacio, new Grupo());
-            uni.addMateria(materia1, uni.buscarGrupoPorNombre(grupo));
-            Profesor profesor = crear_profesor(scanner, uni, materia1, 1);
-            if (profesor == null) {
-                System.out.println("Profesor no se pudo asignar");
-            }
-        } catch (Exception e) {
-            System.err.println("Ocurrió un error al procesar los datos del alumno: " + e.getMessage());
-            e.printStackTrace();
-        }
+//        try {
+//            TerminalUtils.clearTerminal();
+//            System.out.println("Nombre de la materia:  ");
+//            String materia = scanner.nextLine();
+//
+//            System.out.println("Dame el grupo al que pertenece la materia: ");
+//            String grupo = scanner.nextLine();
+//
+//
+//            if (uni.buscarGrupoPorNombre(grupo) != null) {
+//                if (uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia) != null) {
+//                    System.out.println("Materia ya existe");
+//                    return;
+//                }
+//            }
+//            Profesor profesor_vacio = new Profesor();
+//            Materia materia1 = new Materia(materia, profesor_vacio, new Grupo());
+//            uni.addMateria(materia1, uni.buscarGrupoPorNombre(grupo));
+//            Profesor profesor = crear_profesor(scanner, uni, materia1, 1);
+//            if (profesor == null) {
+//                System.out.println("Profesor no se pudo asignar");
+//            }
+//        } catch (Exception e) {
+//            System.err.println("Ocurrió un error al procesar los datos del alumno: " + e.getMessage());
+//            e.printStackTrace();
+//        }
     }
 
     public static void crear_alumno(university uni) {
-        try {
-            TerminalUtils.clearTerminal();
-            if (!uni.getAlumnos().isEmpty() && Alumno.getContador() == uni.getAlumnosMax()) {
-                System.out.println("No se pueden agregar más alumnos");
-                return;
-            }
-            System.out.println("Nombre del alumno: ");
-            String nombre_alumno = scanner.nextLine();
-
-            System.out.println("Apellido del alumno: ");
-            String apellido_alumno = scanner.nextLine();
-
-            System.out.println("Email del alumno: ");
-            String email_alumno = scanner.nextLine();
-
-            System.out.println("Password del alumno: ");
-            String pass_alumno = scanner.nextLine();
-
-            System.out.println("Matricula del alumno: ");
-            String matricula_alumno = scanner.nextLine();
-
-            System.out.println("Dame el grupo al que pertenece el alumno: ");
-            String grupo = scanner.nextLine();
-
-            System.out.println("Dame el nombre de la materia: ");
-            String materia = scanner.nextLine();
-
-            if (uni.getGrupos().isEmpty()) {
-                System.out.println("No hay grupos creados");
-            } else if (uni.buscarGrupoPorNombre(grupo) != null) {
-                if (uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia) != null) {
-                    if (!uni.getAlumnos().isEmpty() && uni.buscarAlumnoPorMatricula(matricula_alumno) != null) {
-                        System.out.println("Alumno ya estaba inscrito");
-                        return;
-                    }
-                    System.out.println("Agregando alumno a la materia");
-                    Alumno alumno = new Alumno(nombre_alumno, apellido_alumno, email_alumno, pass_alumno, Roles.ESTUDIANTE, matricula_alumno);
-                    uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia).inscribirAlumno(alumno, "0");
-                    uni.addAlumno(alumno);
-                } else {
-                    System.out.println("Materia no encontrada");
-                }
-            } else {
-                System.out.println("Grupo encontrado");
-            }
-        } catch (Exception e) {
-            System.err.println("Ocurrió un error al procesar los datos del alumno: " + e.getMessage());
-            e.printStackTrace();
-        }
+//        try {
+//            TerminalUtils.clearTerminal();
+//            if (!uni.getAlumnos().isEmpty() && Alumno.getContador() == uni.getAlumnosMax()) {
+//                System.out.println("No se pueden agregar más alumnos");
+//                return;
+//            }
+//            System.out.println("Nombre del alumno: ");
+//            String nombre_alumno = scanner.nextLine();
+//
+//            System.out.println("Apellido del alumno: ");
+//            String apellido_alumno = scanner.nextLine();
+//
+//            System.out.println("Email del alumno: ");
+//            String email_alumno = scanner.nextLine();
+//
+//            System.out.println("Password del alumno: ");
+//            String pass_alumno = scanner.nextLine();
+//
+//            System.out.println("Matricula del alumno: ");
+//            String matricula_alumno = scanner.nextLine();
+//
+//            System.out.println("Dame el grupo al que pertenece el alumno: ");
+//            String grupo = scanner.nextLine();
+//
+//            System.out.println("Dame el nombre de la materia: ");
+//            String materia = scanner.nextLine();
+//
+//            if (uni.getGrupos().isEmpty()) {
+//                System.out.println("No hay grupos creados");
+//            } else if (uni.buscarGrupoPorNombre(grupo) != null) {
+//                if (uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia) != null) {
+//                    if (!uni.getAlumnos().isEmpty() && uni.buscarAlumnoPorMatricula(matricula_alumno) != null) {
+//                        System.out.println("Alumno ya estaba inscrito");
+//                        return;
+//                    }
+//                    System.out.println("Agregando alumno a la materia");
+//                    Alumno alumno = new Alumno(nombre_alumno, apellido_alumno, email_alumno, pass_alumno, Roles.ESTUDIANTE, matricula_alumno);
+//                    uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(materia).inscribirAlumno(alumno, "0");
+//                    uni.addAlumno(alumno);
+//                } else {
+//                    System.out.println("Materia no encontrada");
+//                }
+//            } else {
+//                System.out.println("Grupo encontrado");
+//            }
+//        } catch (Exception e) {
+//            System.err.println("Ocurrió un error al procesar los datos del alumno: " + e.getMessage());
+//            e.printStackTrace();
+//        }
     }
 
     public static void crear_grupo(university uni, Profesor profesorVacio) {
@@ -280,7 +280,7 @@ public class Menu {
 //            System.err.println("Ocurrió un error al procesar los datos del profesor: " + e.getMessage());
 //            e.printStackTrace();
 //        }
-//        return null;
+        return null;
     }
 
     public static void main(String[] args) {

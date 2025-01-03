@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import personal.Profesor;
 import school.Grupo;
 import school.Materia;
@@ -141,10 +143,31 @@ public class generarMateriasGrup extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, grupo.imprimirMaterias());
         
         
-        for(var materia : grupo.getMaterias()){
-            crearProfe crearProfeInstace = new crearProfe(uni, materia,1);
-            crearProfeInstace.crearProfesor(uni, materia, 1);
-            crearProfeInstace.setVisible(true);
+        for (var materia : grupo.getMaterias()) { 
+            SwingWorker<Void, Void> worker = new SwingWorker<>() { 
+                @Override 
+                protected Void doInBackground() throws Exception {
+                    // No interactuar con la GUI aquí 
+                    return null; 
+                } 
+                @Override 
+                protected void done() { 
+                    try { 
+                        get();
+                        crearProfe crearProfeInstace = new crearProfe(uni, materia, 1); 
+                        crearProfeInstace.crearProfesor(uni, materia, 1); 
+                        crearProfeInstace.setVisible(true); 
+                    } catch (Exception e) { 
+                        e.printStackTrace();
+                    } 
+                } 
+            }; 
+            worker.execute(); 
+            try { 
+                worker.get();
+            } catch (Exception e) { 
+                e.printStackTrace();
+            }
         }
         
         int ver = JOptionPane.showConfirmDialog(this, "¿Quiere ver el listado de todo?", "Confirmar", JOptionPane.YES_NO_OPTION); 

@@ -212,7 +212,7 @@ public class crearProfe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearProfeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProfeButtonActionPerformed
-        crearProfesor(uni, materia,1);
+        crearProfesor(uni, materia, 1);
     }//GEN-LAST:event_crearProfeButtonActionPerformed
 
     private void backcrearProfAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backcrearProfAdminActionPerformed
@@ -221,7 +221,7 @@ public class crearProfe extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backcrearProfAdminActionPerformed
     
-    public void crearProfesor(university uni,Materia materia,int par){
+    public void crearProfesor(university uni,Materia materia,int control){
         try {
             String nombre = nomProfe.getText();
             String apellido = apeProfe.getText();
@@ -233,13 +233,15 @@ public class crearProfe extends javax.swing.JFrame {
 //                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
 //                return;
 //            }
+
             
             if (control == 1) {
+                
                 if (uni.buscarProfesorPorCedula(cedula) != null) {
                     Profesor profesor = uni.buscarProfesorPorCedula(cedula);
                     profesor.addMateria(materia);
                     materia.setProfesor(profesor);
-                    JOptionPane.showMessageDialog(this, "Profesor añadido a la materia");
+                    
                 } else {
                     Profesor profesor = new Profesor(nombre, apellido, email, password, Roles.PROFESOR, cedula, titulo);
                     profesor.addMateria(materia);

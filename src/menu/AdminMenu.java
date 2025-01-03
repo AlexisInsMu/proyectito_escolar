@@ -203,7 +203,9 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_crearGrupoActionPerformed
 
     private void inscribirAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscribirAlumnoActionPerformed
-        Menu.crear_alumno(uni);
+        crearAlumno crearalumno = new crearAlumno(uni);
+        crearalumno.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_inscribirAlumnoActionPerformed
 
     private void crearMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearMateriaActionPerformed
