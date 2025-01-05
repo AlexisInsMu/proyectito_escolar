@@ -4,6 +4,7 @@
  */
 package menu;
 
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,22 +13,21 @@ import personal.Profesor;
 import personal.Roles;
 import school.Materia;
 import school.university;
+import personal.Profesor_aux;
 
 /**
  *
- * @author ldrnt
+ * @author alexisnovo8
  */
-public class crearProfe extends javax.swing.JFrame {
+public class crearProfeAux extends javax.swing.JFrame {
     private university uni;
     private Materia materia;
     private int control;
-    private Profesor profesorVacio;
-    
-    
+    private Profesor_aux profesorVacio;
     /**
-     * Creates new form crearProfe
+     * Creates new form crearProfeAux
      */
-    public crearProfe(university uni, Materia materia, int control) {
+    public crearProfeAux(university uni, Materia materia, int control) {
         this.uni = uni;
         this.materia = materia;
         this.control = control;
@@ -43,14 +43,6 @@ public class crearProfe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        nomProfe = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        apeProfe = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        emailProfe = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         passProfe = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         cedProfe = new javax.swing.JTextField();
@@ -60,25 +52,18 @@ public class crearProfe extends javax.swing.JFrame {
         perteneceProfe = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         imparteMateria = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        nomProfe = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        apeProfe = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        emailProfe = new javax.swing.JTextField();
         crearProfeButton = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         backcrearProfAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Book Antiqua", 1, 18)); // NOI18N
-        jLabel1.setText("Crear un profesor");
-
-        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
-        jLabel2.setText("Nombre:");
-
-        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
-        jLabel3.setText("Apellido:");
-
-        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
-        jLabel4.setText("Email:");
-
-        jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
-        jLabel5.setText("Password:");
 
         jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
         jLabel6.setText("Cédula:");
@@ -93,6 +78,18 @@ public class crearProfe extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Materia que imparte:");
 
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 1, 18)); // NOI18N
+        jLabel1.setText("Crear un profesor");
+
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        jLabel2.setText("Nombre:");
+
+        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        jLabel3.setText("Apellido:");
+
+        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        jLabel4.setText("Email:");
+
         crearProfeButton.setFont(new java.awt.Font("Book Antiqua", 2, 14)); // NOI18N
         crearProfeButton.setText("Crear Profesor");
         crearProfeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +97,9 @@ public class crearProfe extends javax.swing.JFrame {
                 crearProfeButtonActionPerformed(evt);
             }
         });
+
+        jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        jLabel5.setText("Password:");
 
         backcrearProfAdmin.setText("Regresar");
         backcrearProfAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +138,7 @@ public class crearProfe extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(nomProfe)
@@ -146,7 +146,7 @@ public class crearProfe extends javax.swing.JFrame {
                                     .addComponent(emailProfe)
                                     .addComponent(passProfe)
                                     .addComponent(cedProfe, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +203,7 @@ public class crearProfe extends javax.swing.JFrame {
                     .addComponent(tituloProfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(crearProfeButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backcrearProfAdmin)
                 .addGap(15, 15, 15))
         );
@@ -212,7 +212,7 @@ public class crearProfe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearProfeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProfeButtonActionPerformed
-        crearProfesor(uni, materia, 1);
+        crearProfeAux(uni, materia, 1);
     }//GEN-LAST:event_crearProfeButtonActionPerformed
 
     private void backcrearProfAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backcrearProfAdminActionPerformed
@@ -220,8 +220,9 @@ public class crearProfe extends javax.swing.JFrame {
         adminMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backcrearProfAdminActionPerformed
+
     
-    public void crearProfesor(university uni,Materia materia,int control){
+    public void crearProfeAux(university uni, Materia materia,int control){
         try {
             String nombre = nomProfe.getText();
             String apellido = apeProfe.getText();
@@ -281,14 +282,10 @@ public class crearProfe extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
     }
     /**
      * @param args the command line arguments
      */
-    
-    
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -303,22 +300,21 @@ public class crearProfe extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(crearProfe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(crearProfeAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(crearProfe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(crearProfeAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(crearProfe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(crearProfeAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(crearProfe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(crearProfeAux.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         university uni = new university();
         Materia materi = new Materia();
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new crearProfe(uni,materi,1).setVisible(true);
+                new crearProfeAux(uni,materi,1).setVisible(true);
             }
         });
     }

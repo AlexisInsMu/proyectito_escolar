@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -36,48 +36,48 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="backcrearProfAdmin" min="-2" pref="84" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel7" min="-2" pref="51" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="tituloProfe" pref="162" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel6" max="32767" attributes="0"/>
-                                  <Component id="jLabel3" max="32767" attributes="0"/>
-                                  <Component id="jLabel2" max="32767" attributes="0"/>
+                                  <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="0" pref="62" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="nomProfe" max="32767" attributes="0"/>
-                                  <Component id="apeProfe" max="32767" attributes="0"/>
-                                  <Component id="emailProfe" max="32767" attributes="0"/>
+                                  <Component id="nomProfe" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="apeProfe" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="emailProfe" alignment="0" max="32767" attributes="0"/>
                                   <Component id="passProfe" alignment="0" max="32767" attributes="0"/>
                                   <Component id="cedProfe" alignment="0" pref="163" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="74" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                  <Component id="imparteMateria" min="-2" pref="132" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="imparteMateria" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="perteneceProfe" max="32767" attributes="0"/>
-                                  <Component id="jLabel8" max="32767" attributes="0"/>
+                                  <Component id="perteneceProfe" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jLabel8" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                           </Group>
@@ -98,9 +98,9 @@
                   <Component id="nomProfe" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -143,7 +143,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="crearProfeButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="backcrearProfAdmin" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
@@ -151,52 +151,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Book Antiqua" size="18" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Crear un profesor"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Book Antiqua" size="12" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Nombre:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="nomProfe">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Book Antiqua" size="12" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Apellido:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="apeProfe">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Book Antiqua" size="12" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Email:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="emailProfe">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Book Antiqua" size="12" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Password:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="passProfe">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
@@ -240,6 +194,44 @@
     </Component>
     <Component class="javax.swing.JTextField" name="imparteMateria">
     </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Book Antiqua" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Crear un profesor"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Book Antiqua" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Nombre:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nomProfe">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Book Antiqua" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Apellido:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="apeProfe">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Book Antiqua" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Email:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="emailProfe">
+    </Component>
     <Component class="javax.swing.JButton" name="crearProfeButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -250,6 +242,14 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearProfeButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Book Antiqua" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Password:"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="backcrearProfAdmin">
       <Properties>
