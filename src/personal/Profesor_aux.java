@@ -22,6 +22,21 @@ public class Profesor_aux extends Profesor {
     public Profesor_aux() {
         super();
     }
+
+    @Override
+    public String getDetails() {
+        StringBuilder data = new StringBuilder();
+        data.append("Profesor Auxiliar").append("\n");
+        data.append("Nombre: ").append(super.getName()).append("\n");
+        data.append("Apellido: ").append(super.getLastName()).append("\n");
+        data.append("Email: ").append(super.getEmail()).append("\n");
+        data.append("Cedula: ").append(super.getCedula()).append("\n");
+        data.append("Titulo: ").append(super.getTitulo()).append("\n");
+        data.append("Materias: ").append(super.getMaterias().size()).append("\n");
+        data.append("Grupos: ").append(super.getGrupos().size()).append("\n");
+        data.append("Alumnos: ").append(super.getNumberAlumnos()).append("\n");
+        return data.toString();
+    }
     // Método para asignar una materia
     public void setMateriaAsignada(Materia materia) {
         this.materiaAsignada = materia;

@@ -1,9 +1,6 @@
 package school;
 
-import personal.Alumno;
-import personal.Profesor;
-import personal.Profesor_aux;
-import personal.Roles;
+import personal.*;
 import personal.Roles.*;
 
 import java.util.ArrayList;
@@ -115,10 +112,17 @@ public class university {
     }
 
     //Buscamos un profesor en la lista por su cedula.
-    public Profesor buscarProfesorPorCedula(String cedula) {
-        for (Profesor profesor : profesores) {
-            if (profesor.getCedula().equalsIgnoreCase(cedula)) {
-                return profesor;
+    public person buscarProfesorPorCedula(String cedula) {
+        person profesor = null;
+        for (person profesor1 : profesores_Auxs) {
+            if (((Profesor_aux)(profesor1)).getCedula().equalsIgnoreCase(cedula)) {
+                profesor = profesor1;
+            }
+        }
+
+        for (person profesor1 : profesores) {
+            if (((Profesor_aux)(profesor1)).getCedula().equalsIgnoreCase(cedula)) {
+                return profesor1;
             }
         }
         return null; // Retorna null si no se encuentra el profesor

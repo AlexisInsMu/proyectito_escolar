@@ -46,6 +46,9 @@ public class Profesor extends person {
         return materias;
     }
 
+    public ArrayList<String> getGrupos(){
+        return grupos;
+    }
     public void addReporte(String reporte) {
         reportes.add(reporte);
         canReportes++;

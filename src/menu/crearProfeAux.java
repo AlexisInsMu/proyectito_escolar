@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import static menu.Menu.crear_profesor;
 import personal.Profesor;
 import personal.Roles;
+import personal.person;
 import school.Materia;
 import school.university;
 import personal.Profesor_aux;
@@ -239,9 +240,16 @@ public class crearProfeAux extends javax.swing.JFrame {
             if (control == 1) {
                 
                 if (uni.buscarProfesorPorCedula(cedula) != null) {
-                    Profesor profesor = uni.buscarProfesorPorCedula(cedula);
-                    profesor.addMateria(materia);
-                    materia.setProfesor(profesor);
+                    person persona = uni.buscarProfesorPorCedula(cedula);
+                    if (persona instanceof Profesor_aux){
+                        JOptionPane.showMessageDialog(this, "El profesor es un profesor auxiliar y ya está asignado a otra materia.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    if(persona instanceof Profesor profesor){
+                        profesor.addMateria(materia);
+                        materia.setProfesor(profesor);
+                        return;
+                    }
                     
                 } else {
                     Profesor profesor = new Profesor(nombre, apellido, email, password, Roles.PROFESOR, cedula, titulo);
