@@ -93,6 +93,14 @@ public class Profesor extends person {
         this.canReportes = canReportes;
     }
 
+    public int getNumberAlumnos() {
+        int alumnos = 0;
+        for (Materia materia : this.materias) {
+            alumnos += materia.getAlumnosCalificaciones().size();
+        }
+        return alumnos;
+    }
+
     //Imprime los datos de la clase person más los de esta clase.
     @Override
     public String toString() {
@@ -123,4 +131,34 @@ public class Profesor extends person {
         }
         return grupos.toString();
     }
+
+    @Override
+    public String getDetails() {
+        StringBuilder data = new StringBuilder();
+        data.append("Nombre: ").append(this.getName()).append("\n");
+        data.append("Apellido: ").append(this.getLastName()).append("\n");
+        data.append("Email: ").append(this.getEmail()).append("\n");
+        data.append("Cedula: ").append(this.getCedula()).append("\n");
+        data.append("Titulo: ").append(this.getTitulo()).append("\n");
+        data.append("Materias: ").append(materias.size()).append("\n");
+        data.append("Grupos: ").append(grupos.size()).append("\n");
+        data.append("Alumnos: ").append(getNumberAlumnos()).append("\n");
+        // Agregar en un futuro una lista simplkificada y una lista extendida de Materias
+        //data.append("Materias: ").append(this.imprimirMaterias()).append("\n");
+        // Agregar en un futuro una lista simplkificada y una lista extendida de Grupos
+        //data.append("Grupos: ").append(this.imprimirGrupos()).append("\n");
+        // Agregar en un futuro una lista simplkificada y una lista extendida de alumnos
+        //data.append("Alumnos: ").append(this.imprimirAlumnos()).append("\n");
+        return data.toString();
+    }
+
+    @Override
+    public String getRole() {
+        StringBuilder data = new StringBuilder();
+        data.append("Role").append(Roles.PROFESOR).append("\n");
+        data.append("Cedula: ").append(this.getCedula()).append("\n");
+        data.append("Titulo: ").append(this.getTitulo()).append("\n");
+        return data.toString();
+    }
+
 }

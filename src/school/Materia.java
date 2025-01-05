@@ -2,6 +2,7 @@ package school;
 
 import personal.Alumno;
 import personal.Profesor;
+import personal.Profesor_aux;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,7 @@ public class Materia {
     //relaciona a los alumnos inscritos con sus calificaciones
     private final Map<Alumno, String> alumnosCalificaciones;
     private Profesor profesor;
-    private Profesor profesor_aux =  null;
+    private Profesor_aux profesor_aux;
     private Grupo grupo;
 
     //Constructor: Se crea ya con un nombre, un profesor asignado y un grupo asignados.
@@ -37,12 +38,12 @@ public class Materia {
     }
 
     //Asignamos un profesor auxiliar a la materia
-    public void setProfesor_auxiliar(Profesor profesor_aux){
+    public void setProfesor_auxiliar(Profesor_aux profesor_aux){
         this.profesor_aux = profesor_aux;
     }
 
     //Se obtiene el profesor auxiliar
-    public Profesor getProfesor_auxiliar(){
+    public Profesor_aux getProfesor_auxiliar(){
         return profesor_aux;
     }
 

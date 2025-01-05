@@ -1,11 +1,15 @@
 package personal;
 
-public class person{
+public abstract class person{
     private String name;
     private String lastName;
     private String email;
     private String password;
     private Roles role;
+
+
+    abstract public String getDetails();
+    abstract public String getRole();
 
     //Constructor
     public person(String name, String lastName, String email, String password, Roles role){
@@ -42,11 +46,6 @@ public class person{
     //Se obtiene la contraseña de la persona
     public String getPassword(){
         return this.password;
-    }
-
-    //Se obtiene el rol de tipo Roles de la persona
-    public Roles getRole(){
-        return this.role;
     }
 
     //Se establece el nombre

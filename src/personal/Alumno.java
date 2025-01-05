@@ -8,6 +8,7 @@ import java.util.Map;
 public class Alumno extends person {
     private String matricula;
     private Map<Materia, String> materiasCalificaciones;
+    
     private static int contador = 0;
 
     public Alumno(String name, String lastName, String email, String password, Roles role, String matricula) {
@@ -51,6 +52,7 @@ public class Alumno extends person {
         }
         return calificaciones;
     }
+
     public String imprimirMaterias(){
         String materias = "";
         for (Map.Entry<Materia, String> entry : materiasCalificaciones.entrySet()) {
@@ -66,5 +68,25 @@ public class Alumno extends person {
     @Override
     public String toString() {
         return super.toString() + "\nMatricula: " + matricula + "\nMaterias: " + materiasCalificaciones;
+    }
+
+    @Override
+    public String getDetails() {
+        StringBuilder data = new StringBuilder();
+        data.append("Nombre: ").append(this.getName()).append("\n");
+        data.append("Apellido: ").append(this.getLastName()).append("\n");
+        data.append("Email: ").append(this.getEmail()).append("\n");
+        data.append("Matricula: ").append(this.matricula).append("\n");
+        data.append("Materias: ").append(this.imprimirMaterias()).append("\n");
+        data.append("Calificaciones: ").append(this.imprimirCalificaciones()).append("\n");
+        return data.toString(); 
+    }
+
+    @Override
+    public String getRole() {
+        StringBuilder ROLE = new StringBuilder();
+        ROLE.append("Role: ").append(Roles.ESTUDIANTE);
+        ROLE.append("Matricula: ").append(this.matricula);
+        return ROLE.toString();
     }
 }

@@ -2,6 +2,7 @@ package school;
 
 import personal.Alumno;
 import personal.Profesor;
+import personal.Profesor_aux;
 import personal.Roles;
 import personal.Roles.*;
 
@@ -12,6 +13,7 @@ import java.util.Map;
 public class university {
     private final List<Alumno> alumnos;
     private final List<Profesor> profesores;
+    private final List<Profesor_aux> profesores_Auxs;
     private final List<String> materias;
     private final List<Grupo> grupos;
     private Map<Profesor, String> reportes;
@@ -23,6 +25,7 @@ public class university {
         this.profesores = new ArrayList<Profesor>();
         this.materias = new ArrayList<String>();
         this.grupos = new ArrayList<Grupo>();
+        this.profesores_Auxs = new ArrayList<Profesor_aux>();
     }
 
     //Agregar un alumno
@@ -34,6 +37,10 @@ public class university {
     public void addProfesor(Profesor profesor) {
         profesores.add(profesor);
     }
+    public void addProfesor_aux(Profesor_aux profesor_aux) {
+        profesores_Auxs.add(profesor_aux);
+    }
+
 
     //Agrega una materia a un grupo.
     public void addMateria(Materia materia, Grupo grupo) {
