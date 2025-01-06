@@ -125,6 +125,10 @@ public class generarMateriasGrup extends javax.swing.JFrame {
         int numeroMaterias;
         try {
             numeroMaterias = Integer.parseInt(numeroMateriasField.getText());
+            if(numeroMaterias <= 0) {
+                JOptionPane.showMessageDialog(this, "Por favor, ingrese un número mayor a 0.");
+                return;
+            }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese un número válido.");
             return;
@@ -143,26 +147,26 @@ public class generarMateriasGrup extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, grupo.imprimirMaterias());
         
         
-        for (var materia : grupo.getMaterias()) { 
-            SwingWorker<Void, Void> worker = new SwingWorker<>() { 
-                @Override 
+        for (var materia : grupo.getMaterias()) {
+            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                @Override
                 protected Void doInBackground() throws Exception {
-                    // No interactuar con la GUI aquí 
-                    return null; 
-                } 
-                @Override 
-                protected void done() { 
-                    try { 
+                    // No interactuar con la GUI aquí
+                    return null;
+                }
+                @Override
+                protected void done() {
+                    try {
                         get();
-                        crearProfe crearProfeInstace = new crearProfe(uni, materia, 1); 
-                        crearProfeInstace.crearProfesor(uni, materia, 1); 
-                        crearProfeInstace.setVisible(true); 
-                    } catch (Exception e) { 
+                        crearProfe crearProfeInstace = new crearProfe(generarMateriasGrup.this,uni, materia, 1);
+                        crearProfeInstace.crearProfesor(uni, materia, 1);
+                        crearProfeInstace.setVisible(true);
+                    } catch (Exception e) {
                         e.printStackTrace();
-                    } 
-                } 
-            }; 
-            worker.execute(); 
+                    }
+                }
+            };
+            worker.execute();
             try { 
                 worker.get();
             } catch (Exception e) { 

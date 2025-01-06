@@ -198,17 +198,20 @@ public class AdminMenu extends javax.swing.JFrame {
 
     
     private void crearProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProfesorActionPerformed
-        crearProfe crearprofe = new crearProfe(uni,materia,control);
+        crearProfe crearprofe = new crearProfe(null, uni,materia,control);
         crearprofe.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_crearProfesorActionPerformed
 
     private void crearGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearGrupoActionPerformed
-        if (uni == null || profesor_vacio == null || generarmateriasGrup == null) {
-        JOptionPane.showMessageDialog(this, 
-            "No se puede crear un grupo porque hay datos faltantes.",
+        if (uni == null || /*profesor_vacio == null ||*/generarmateriasGrup == null) {
+        JOptionPane.showMessageDialog(this,
+            "No se puede crear un grupo porque hay datos faltantes. " + (uni == null ? "uni" : "") + (profesor_vacio == null ? "profesor_vacio" : "") + (generarmateriasGrup == null ? "generarmateriasGrup" : ""),
             "Error", JOptionPane.ERROR_MESSAGE);
         return;
+        }
+        if(profesor_vacio == null){
+            profesor_vacio = new Profesor();
         }
         crearGrupo creargrupo = new crearGrupo(uni, profesor_vacio, generarmateriasGrup);
         creargrupo.setVisible(true);

@@ -12,6 +12,7 @@ import static menu.Menu.crear_profesor;
 import personal.Profesor;
 import personal.Roles;
 import personal.person;
+import school.Grupo;
 import school.Materia;
 import school.university;
 import personal.Profesor_aux;
@@ -236,21 +237,20 @@ public class crearProfeAux extends javax.swing.JFrame {
 //                return;
 //            }
 
-            
+
             if (control == 1) {
-                
-                if (uni.buscarProfesorPorCedula(cedula) != null) {
-                    person persona = uni.buscarProfesorPorCedula(cedula);
-                    if (persona instanceof Profesor_aux){
+                person persona = uni.buscarProfesorPorCedula(cedula);
+                if (persona != null) {
+                    if (persona instanceof Profesor_aux) {
                         JOptionPane.showMessageDialog(this, "El profesor es un profesor auxiliar y ya está asignado a otra materia.", "Error", JOptionPane.ERROR_MESSAGE);
                         return;
-                    }
-                    if(persona instanceof Profesor profesor){
+                    } else if (persona instanceof Profesor) {
+                        Profesor profesor = (Profesor) persona;
                         profesor.addMateria(materia);
                         materia.setProfesor(profesor);
+                        JOptionPane.showMessageDialog(this, "Materia añadida al profesor existente.");
                         return;
                     }
-                    
                 } else {
                     Profesor profesor = new Profesor(nombre, apellido, email, password, Roles.PROFESOR, cedula, titulo);
                     profesor.addMateria(materia);
@@ -261,34 +261,38 @@ public class crearProfeAux extends javax.swing.JFrame {
             } else {
                 String grupo = JOptionPane.showInputDialog(this, "Nombre del grupo: ");
                 String nombreMateria = JOptionPane.showInputDialog(this, "Nombre de la materia:");
-                
+
                 if (grupo == null || nombreMateria == null || grupo.isEmpty() || nombreMateria.isEmpty()) {
                     JOptionPane.showMessageDialog(this, "Grupo y materia son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 if (uni.getGrupos().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "No hay grupos creados.", "Error", JOptionPane.ERROR_MESSAGE);
-                }else if(uni.buscarGrupoPorNombre(grupo) != null){
-                    Materia mat = uni.buscarGrupoPorNombre(grupo).buscarMateriaPorNombre(nombreMateria);
-                    if (mat != null) {
-                        if (mat.getProfesor() != null && mat.getProfesor().getName().equals(nombre)) {
-                           JOptionPane.showMessageDialog(this, "El profesor ya está asignado a esta materia.", "Error", JOptionPane.ERROR_MESSAGE);
-                           return; 
+                } else {
+                    Grupo grupoObj = uni.buscarGrupoPorNombre(grupo);
+                    if (grupoObj != null) {
+                        Materia mat = grupoObj.buscarMateriaPorNombre(nombreMateria);
+                        if (mat != null) {
+                            if (mat.getProfesor() != null && mat.getProfesor().getName().equals(nombre)) {
+                                JOptionPane.showMessageDialog(this, "El profesor ya está asignado a esta materia.", "Error", JOptionPane.ERROR_MESSAGE);
+                                return;
+                            }
+                            Profesor profesor = new Profesor(nombre, apellido, email, password, Roles.PROFESOR, cedula, titulo);
+                            mat.setProfesor(profesor);
+                            uni.addProfesor(profesor);
+                            JOptionPane.showMessageDialog(this, "Profesor creado y asignado a la materia.");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Materia no encontrada.", "Error", JOptionPane.ERROR_MESSAGE);
                         }
-                        Profesor profesor = new Profesor(nombre, apellido, email, password, Roles.PROFESOR, cedula, titulo);
-                        mat.setProfesor(profesor);
-                        uni.addProfesor(profesor);
-                        JOptionPane.showMessageDialog(this, "Profesor creado y asignado a la materia.");
-                    } else{
-                        JOptionPane.showMessageDialog(this, "Materia no encontrada.", "Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Grupo no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                }else{
-                    JOptionPane.showMessageDialog(this, "Grupo no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
-           dispose();
+            this.dispose();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
         }
     }
     /**

@@ -7,6 +7,7 @@ package menu;
 import javax.swing.JOptionPane;
 import personal.Profesor;
 import personal.Profesor_aux;
+import personal.Roles;
 import personal.person;
 import school.university;
 
@@ -20,7 +21,7 @@ public class ProfeMenu extends javax.swing.JFrame {
     /**
      * Creates new form ProfeMenu
      */
-    public ProfeMenu(university uni) {
+    public ProfeMenu(university uni, Profesor profesor_vacio) {
         this.uni = uni;
         initComponents();
     }
@@ -220,11 +221,12 @@ public class ProfeMenu extends javax.swing.JFrame {
         }
         //</editor-fold>
         university uni = new university();
+        Profesor profesor_vacio = new Profesor("","","","", Roles.PROFESOR, "","");
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ProfeMenu(uni).setVisible(true);
+                new ProfeMenu(uni, profesor_vacio).setVisible(true);
             }
         });
     }

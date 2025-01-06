@@ -125,7 +125,7 @@ public class crearMateria extends javax.swing.JFrame {
             Materia nuevaMateria = new Materia(materia, profesorVacio, new Grupo());
             uni.addMateria(nuevaMateria, uni.buscarGrupoPorNombre(grupo));
             
-            crearProfe profesor = new crearProfe(uni, nuevaMateria, 1); 
+            crearProfe profesor = new crearProfe(this, uni, nuevaMateria, 1);
             profesor.crearProfesor(uni, nuevaMateria, 1); 
             profesor.setVisible(true);
             
