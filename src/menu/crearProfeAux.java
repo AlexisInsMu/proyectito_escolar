@@ -21,7 +21,7 @@ import personal.Profesor_aux;
  *
  * @author alexisnovo8
  */
-public class crearProfeAux extends javax.swing.JFrame {
+public class crearProfeAux extends JDialog {
     private university uni;
     private Materia materia;
     private int control;
@@ -29,7 +29,8 @@ public class crearProfeAux extends javax.swing.JFrame {
     /**
      * Creates new form crearProfeAux
      */
-    public crearProfeAux(university uni, Materia materia, int control) {
+    public crearProfeAux(JFrame parent, university uni, Materia materia, int control) {
+        super(parent, true);
         this.uni = uni;
         this.materia = materia;
         this.control = control;
