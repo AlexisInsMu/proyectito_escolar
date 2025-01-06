@@ -6,6 +6,8 @@ package menu;
 
 import javax.swing.JOptionPane;
 import personal.Profesor;
+import personal.Profesor_aux;
+import personal.person;
 import school.university;
 
 /**
@@ -13,7 +15,7 @@ import school.university;
  * @author ldrnt
  */
 public class ProfeMenu extends javax.swing.JFrame {
-    private university uni;
+    final private  university uni;
     private Profesor profesor_vacio;
     /**
      * Creates new form ProfeMenu
@@ -116,7 +118,22 @@ public class ProfeMenu extends javax.swing.JFrame {
     private void verMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verMateriasActionPerformed
         String cedula = JOptionPane.showInputDialog("Dame la cedula del profesor:");
         if(uni.buscarProfesorPorCedula(cedula) != null){
-            JOptionPane.showMessageDialog(this, uni.buscarProfesorPorCedula(cedula).imprimirMaterias());
+            person Person = uni.buscarProfesorPorCedula(cedula);
+            if (Person instanceof Profesor_aux) {
+                Profesor_aux profesor = (Profesor_aux) Person;
+                if (profesor.getMaterias().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "El profesor auxiliar no tiene materias asignadas", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, profesor.imprimirMaterias());
+                }
+            } else if (Person instanceof Profesor) {
+                Profesor profesor = (Profesor) Person;
+                if (profesor.getMaterias().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "El profesor no tiene materias asignadas", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, profesor.imprimirMaterias());
+                }
+            }
         }else{
             JOptionPane.showMessageDialog(this, "Profesor no encontrado","Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -131,7 +148,22 @@ public class ProfeMenu extends javax.swing.JFrame {
     private void verAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verAlumnosActionPerformed
         String cedula = JOptionPane.showInputDialog("Dame la cedula del profesor:");
         if(uni.buscarProfesorPorCedula(cedula) != null){
-            JOptionPane.showMessageDialog(this, uni.buscarProfesorPorCedula(cedula).imprimirAlumnos());
+            person Person = uni.buscarProfesorPorCedula(cedula);
+            if (Person instanceof Profesor_aux) {
+                Profesor_aux profesor = (Profesor_aux) Person;
+                if (profesor.getMaterias().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "El profesor auxiliar no tiene alumnos asignados", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, profesor.imprimirAlumnos());
+                }
+            } else if (Person instanceof Profesor) {
+                Profesor profesor = (Profesor) Person;
+                if (profesor.getMaterias().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "El profesor no tiene alumnos asignados", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, profesor.imprimirAlumnos());
+                }
+            }
         }else{
             JOptionPane.showMessageDialog(this, "Profesor no encontrado","Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -140,7 +172,22 @@ public class ProfeMenu extends javax.swing.JFrame {
     private void verGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verGruposActionPerformed
         String cedula = JOptionPane.showInputDialog("Dame la cedula del profesor:");
         if(uni.buscarProfesorPorCedula(cedula) != null){
-            JOptionPane.showMessageDialog(this, uni.buscarProfesorPorCedula(cedula).imprimirGrupos());
+            person Person = uni.buscarProfesorPorCedula(cedula);
+            if (Person instanceof Profesor_aux) {
+                Profesor_aux profesor = (Profesor_aux) Person;
+                if (profesor.getMaterias().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "El profesor auxiliar no tiene Grupos asignados", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, profesor.imprimirGrupos());
+                }
+            } else if (Person instanceof Profesor) {
+                Profesor profesor = (Profesor) Person;
+                if (profesor.getMaterias().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "El profesor no tiene Grupos asignados", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, profesor.imprimirGrupos());
+                }
+            }
         }else{
             JOptionPane.showMessageDialog(this, "Profesor no encontrado","Error", JOptionPane.ERROR_MESSAGE);
         }
