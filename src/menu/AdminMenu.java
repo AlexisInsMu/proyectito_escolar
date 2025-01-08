@@ -225,7 +225,9 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_inscribirAlumnoActionPerformed
 
     private void crearMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearMateriaActionPerformed
-        Menu.crear_materia(uni);
+        crearMateria crearmat = new crearMateria(uni);
+        crearmat.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_crearMateriaActionPerformed
 
     private void listadoProfsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoProfsActionPerformed
