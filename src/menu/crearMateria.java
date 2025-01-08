@@ -16,6 +16,7 @@ import school.university;
  */
 public class crearMateria extends javax.swing.JFrame {
     private university uni;
+    private Profesor profesorVacio;
     /**
      * Creates new form crearMateria
      */
@@ -58,6 +59,11 @@ public class crearMateria extends javax.swing.JFrame {
         });
 
         backCrearMatAdminMenu.setText("Regresar");
+        backCrearMatAdminMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backCrearMatAdminMenuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,6 +144,12 @@ public class crearMateria extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ocurrió un error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_crearMateriaActionPerformed
+
+    private void backCrearMatAdminMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backCrearMatAdminMenuActionPerformed
+        AdminMenu adminMenu = new AdminMenu(uni, profesorVacio);
+        adminMenu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backCrearMatAdminMenuActionPerformed
 
     /**
      * @param args the command line arguments
