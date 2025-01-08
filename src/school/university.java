@@ -121,7 +121,7 @@ public class university {
         }
 
         for (person profesor1 : profesores) {
-            if (((Profesor_aux)(profesor1)).getCedula().equalsIgnoreCase(cedula)) {
+            if (((Profesor)(profesor1)).getCedula().equalsIgnoreCase(cedula)) {
                 return profesor1;
             }
         }

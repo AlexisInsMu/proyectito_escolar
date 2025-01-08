@@ -266,8 +266,10 @@ public class crearProfe extends JDialog {
                     JOptionPane.showMessageDialog(this, "Grupo no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
-            dispose();
+            this.dispose();
         } catch (Exception ex) {
+            System.out.println("Error: aqui es es" + ex.getMessage());
+            ex.fillInStackTrace();
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }

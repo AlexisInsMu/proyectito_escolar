@@ -251,7 +251,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_backPrincipal1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        crearProfeAux crearprofeaux = new crearProfeAux(uni,materia,control);
+        crearProfeAux crearprofeaux = new crearProfeAux(null,uni,materia,control);
         crearprofeaux.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -145,45 +145,48 @@ public class generarMateriasGrup extends javax.swing.JFrame {
         }
         
         JOptionPane.showMessageDialog(this, grupo.imprimirMaterias());
-        
-        
+
+
         for (var materia : grupo.getMaterias()) {
-            SwingWorker<Void, Void> worker = new SwingWorker<>() {
-                @Override
-                protected Void doInBackground() throws Exception {
-                    // No interactuar con la GUI aquí
-                    return null;
-                }
-                @Override
-                protected void done() {
-                    try {
-                        get();
-                        crearProfe crearProfeInstace = new crearProfe(generarMateriasGrup.this,uni, materia, 1);
-                        crearProfeInstace.crearProfesor(uni, materia, 1);
-                        crearProfeInstace.setVisible(true);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            };
-            worker.execute();
-            try { 
-                worker.get();
-            } catch (Exception e) { 
-                e.printStackTrace();
-            }
+            crearProfe crearProfeInstace = new crearProfe(this, uni, materia, 1);
+            crearProfeInstace.setVisible(true);
+
+            //crearProfeInstace.crearProfesor(uni, materia, 1);
         }
-        
-        int ver = JOptionPane.showConfirmDialog(this, "¿Quiere ver el listado de todo?", "Confirmar", JOptionPane.YES_NO_OPTION); 
-        if (ver == JOptionPane.YES_OPTION) { 
+
+        JOptionPane.showMessageDialog(this, "Profesores agregados");
+        int ver = JOptionPane.showConfirmDialog(this, "¿Quiere ver el listado de todo?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (ver == JOptionPane.YES_OPTION) {
             for (var materia : grupo.getMaterias()) {
                 JOptionPane.showMessageDialog(this, materia.getNombre());
-            } 
+            }
         }
-        
         materiasPanel.revalidate();
         materiasPanel.repaint();
     }//GEN-LAST:event_generarButtonActionPerformed
+
+    private SwingWorker<Void, Void> getVoidVoidSwingWorker(Materia materia) {
+        SwingWorker<Void, Void> worker = new SwingWorker<>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                // No interactuar con la GUI aquí
+                return null;
+            }
+            @Override
+            protected void done() {
+                try {
+                    get();
+                    crearProfe crearProfeInstace = new crearProfe(generarMateriasGrup.this,uni, materia, 1);
+                    crearProfeInstace.crearProfesor(uni, materia, 1);
+                    crearProfeInstace.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        worker.execute();
+        return worker;
+    }
 
     private void backgenerarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backgenerarAdminActionPerformed
         AdminMenu adminMenu = new AdminMenu(uni, profesorVacio);

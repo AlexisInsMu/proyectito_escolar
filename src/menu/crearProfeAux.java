@@ -327,7 +327,7 @@ public class crearProfeAux extends JDialog {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new crearProfeAux(uni,materi,1).setVisible(true);
+                new crearProfeAux(null,uni,materi,1).setVisible(true);
             }
         });
     }

@@ -85,6 +85,9 @@ public class Materia {
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
     }
+    public void setProfesor(Profesor_aux profesor_aux){
+        this.profesor_aux = profesor_aux;
+    }
 
     public Grupo getGrupo() {
         return grupo;
